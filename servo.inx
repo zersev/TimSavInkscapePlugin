@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <_name>MI GRBL Z-AXIS Servo Controller (V007)</_name>
+    <id>youtube.com/c/mrinnovative</id>
+	<dependency type="executable" location="extensions">servo.py</dependency>
+	<dependency type="executable" location="extensions">inkex.py</dependency>
+	<param name='active-tab' type="notebook">
+
+		<page name='gcode' _gui-text='Gcode'>
+			<param name="laser-command" type="string" _gui-text="Servo up:">M3</param>
+			<param name="laser-off-command" type="string" _gui-text="Servo down:">M5</param>
+			<param name="travel-speed" type="int" min="0" max="12000" _gui-text="X axis speed (mm/min):">1000</param>
+			<param name="laser-speed" type="int" min="0" max="4000" _gui-text="Y axis speed (mm/min):">500</param>
+			<param name="laser-power" type="int" min="0" max="10000" _gui-text="Angle for servo S# (0-180):">90</param>
+			<param name="auto-power" type="boolean" _gui-text="Set servo angle by layer">true</param>
+			<param name="layer-filter" type="string" _gui-text="Layer filter:"></param>
+			<param name="power-delay" type="float" min="0" max="10" _gui-text="Delay (s):">1</param>	
+			<param name="directory" type="string" _gui-text="Directory:">C:\Users\Public</param>
+			<param name="filename" type="string" _gui-text="Filename:">servo.gcode</param>
+			<param name="add-numeric-suffix-to-filename" type="boolean" _gui-text="Add Numeric suffix to file name">true</param>
+		</page>
+
+		<page name='area_fill' _gui-text='Fill Area'>	
+			<param name="area-fill-angle" type="float" min="-360" max="360" _gui-text="Area fill angle:">0</param>
+			<param name="area-fill-overlap" type="float" min="0" max="0.9" _gui-text="Pen lines overlap (0..0.9):">0</param>
+			<param name="area-fill-thick"  type="float" min="0.5" max="20" _gui-text="Pen thickness (mm):">1</param>
+			<param name="area-fill-method"  _gui-text="Fill method" type="optiongroup">
+				<_option value="zig-zag">Zig zag</_option>
+				<_option value="spiral">Spiral</_option>
+			</param>
+			<_param name="helpPen" type="description" xml:space="preserve">Pen/Marher offsets: Location offsts of the pen 
+to be used by the GCode generator. Pen layers must be 
+marked with "Pen" keyword to apply offsets. 
+			</_param>
+			<param name="pen-offset-x" type="float" min="-100" max="100" _gui-text="X offset (mm):">0</param>
+			<param name="pen-offset-y" type="float" min="-100" max="100" _gui-text="Y offset (mm):">0</param>
+		</page>		
+
+	</param>	
+ 	<effect>
+		<effects-menu>
+			<submenu _name="MI GRBL Z-AXIS Servo Controller"/>
+		</effects-menu>
+		<object-type>path</object-type>
+  	</effect>
+
+	<script>
+		<command reldir="extensions" interpreter="python">servo.py</command>
+	</script>
+
+</inkscape-extension>
